@@ -9,7 +9,7 @@ const catalogDefinitions = [
     field: 'IdCategoria',
     resource: 'categorias',
     label: 'Categoría',
-    allowedNames: ['1 - Máxima prioridad', '2 - Alta prioridad', '3 - Prioridad media', '4 - Baja prioridad', '5 - Mínima prioridad'],
+    allowedNames: ['1 - Alta prioridad', '2 - Normal', '3 - Baja prioridad'],
     name: item => item.NombreCategoria,
   },
   { field: 'IdZona', resource: 'zonas', label: 'Zona', allowedNames: ['Rural', 'Urbano'], name: item => item.NombreZona },

@@ -17,16 +17,14 @@ class DatabaseSeeder extends Seeder
             TipoUsuario::firstOrCreate(['NombreTipo' => $role]);
         }
 
-        foreach (['Baja', 'Media', 'Alta'] as $priority) {
+        foreach (['Baja', 'Normal', 'Alta'] as $priority) {
             Prioridad::firstOrCreate(['NivelPrioridad' => $priority]);
         }
 
         foreach ([
-            '1 - Máxima prioridad',
-            '2 - Alta prioridad',
-            '3 - Prioridad media',
-            '4 - Baja prioridad',
-            '5 - Mínima prioridad',
+            '1 - Alta prioridad',
+            '2 - Normal',
+            '3 - Baja prioridad',
         ] as $category) {
             Categoria::firstOrCreate(['NombreCategoria' => $category]);
         }

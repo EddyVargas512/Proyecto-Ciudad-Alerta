@@ -31,14 +31,14 @@ class IncidenciaPrioridadService
             $apoyosCercanos = $idsCercanas->sum(fn ($id) => (int) ($apoyos[$id] ?? 0));
             $cantidadCercanas = $cercanas->count();
             $nombreCategoria = (string) ($categorias[$incidencia->IdCategoria] ?? '');
-            preg_match('/^([1-5])\s*-/u', $nombreCategoria, $coincidencias);
+            preg_match('/^([1-3])\s*-/u', $nombreCategoria, $coincidencias);
             $rangoCategoria = isset($coincidencias[1]) ? (int) $coincidencias[1] : null;
             // La categoría 1 empieza con más puntos; cada reporte cercano y apoyo suma más.
             $puntajeCategoria = match ($rangoCategoria) {
-                1, 2 => 12,
-                3 => 9,
-                4 => 6,
-                5 => 3,
+                1 => 12,
+                2 => 9,
+
+                3 => 3,
                 default => 0,
             };
             // No se cuenta la misma incidencia como "reporte adicional" dentro de su grupo.
@@ -96,7 +96,7 @@ class IncidenciaPrioridadService
         }
 
         if ($puntaje >= 9) {
-            return 'Media';
+            return 'Normal';
         }
 
         return 'Baja';

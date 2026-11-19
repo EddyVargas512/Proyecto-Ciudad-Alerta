@@ -183,7 +183,7 @@ export default function AdminPage() {
           <div className="filters admin-filters">
             <label className="search-wrap"><input className="search-input" type="search" placeholder="Buscar reporte o autor…" value={search} onChange={event => setSearch(event.target.value)} aria-label="Buscar incidencias"/></label>
             <select className="filter-select" value={statusFilter} onChange={event => setStatusFilter(event.target.value)} aria-label="Filtrar por estado"><option>Todas</option>{STATUSES.map(status => <option key={status}>{status}</option>)}</select>
-            <select className="filter-select" value={priorityFilter} onChange={event => setPriorityFilter(event.target.value)} aria-label="Filtrar por prioridad"><option>Todas</option><option>Baja</option><option>Media</option><option>Alta</option></select>
+            <select className="filter-select" value={priorityFilter} onChange={event => setPriorityFilter(event.target.value)} aria-label="Filtrar por prioridad"><option>Todas</option><option>Baja</option><option>Normal</option><option>Alta</option></select>
           </div>
         </div>
 
@@ -194,7 +194,7 @@ export default function AdminPage() {
               const assignKey = `assign-${item.IdIncidencia}`
               return <article className="admin-incident-card" key={item.IdIncidencia}>
                 <div className="admin-incident-heading">
-                  <div><p className="admin-record-id">Reporte #{item.IdIncidencia} · {item.usuario?.Nombre || `Usuario ${item.IdUsuario}`}</p><div className="incident-topline"><h3 className="incident-title">{item.Titulo}</h3><StatusBadge status={item.Estado}/><span className={`priority-badge ${priorityClass(item.PrioridadCalculada)}`}>{item.PrioridadCalculada || 'Baja'} prioridad</span></div></div>
+                  <div><p className="admin-record-id">Reporte #{item.IdIncidencia} · {item.usuario?.Nombre || `Usuario ${item.IdUsuario}`}</p><div className="incident-topline"><h3 className="incident-title">{item.Titulo}</h3><StatusBadge status={item.Estado}/><span className={`priority-badge ${priorityClass(item.PrioridadCalculada)}`}>{item.PrioridadCalculada === 'Normal' ? 'Prioridad normal' : (item.PrioridadCalculada || 'Baja') + ' prioridad'}</span></div></div>
                   <span className="meta-item">{new Intl.DateTimeFormat('es-CO', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(item.created_at))}</span>
                 </div>
                 <p className="incident-description admin-description">{item.Descripcion}</p>

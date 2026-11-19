@@ -119,7 +119,7 @@ export default function IncidenciasPage() {
               return (
                 <article className="incident-card citizen-incident" key={item.IdIncidencia}>
                   <div className="incident-main">
-                    <div className="incident-topline"><h3 className="incident-title">{item.Titulo}</h3><StatusBadge status={item.Estado}/><span className={`priority-badge ${prioridadClass(item.PrioridadCalculada)}`}>{item.PrioridadCalculada || 'Baja'} prioridad</span></div>
+                    <div className="incident-topline"><h3 className="incident-title">{item.Titulo}</h3><StatusBadge status={item.Estado}/><span className={`priority-badge ${prioridadClass(item.PrioridadCalculada)}`}>{item.PrioridadCalculada === 'Normal' ? 'Prioridad normal' : (item.PrioridadCalculada || 'Baja') + ' prioridad'}</span></div>
                     <p className="incident-description">{item.Descripcion}</p>
                     <div className="incident-meta">
                       {item.UbicacionTexto && <span className="meta-item">{item.UbicacionTexto}</span>}
