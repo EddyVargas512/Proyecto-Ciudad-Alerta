@@ -3,7 +3,7 @@
         "laravel-boost": {
             "command": "php",
             "args": [
-                "artisan",
+                "Backend/ciudad-alerta/artisan",
                 "boost:mcp"
             ]
         }
